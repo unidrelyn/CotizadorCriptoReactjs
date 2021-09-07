@@ -21,24 +21,25 @@ const Select = styled.select`
 	font-size: 1.5rem;
 `;
 
-const useMoneda = (label, stateInicial, opciones) => {
+const useCriptoMoneda = (label, stateInicial, opciones) => {
+	console.log(opciones);
 	const [state, setState] = useState(stateInicial);
 
-	const Seleccionar = () => (
+	const SelectCripto = () => (
 		<Fragment>
 			<Label>{label}</Label>
 			<Select value={state} onChange={(e) => setState(e.target.value)}>
 				<option value="">Seleccione</option>
 				{opciones.map((opcion) => (
-					<option key={opcion.codigo} value={opcion.codigo}>
-						{opcion.nombre}
+					<option key={opcion.CoinInfo.id} value={opcion.CoinInfo.Name}>
+						{opcion.CoinInfo.FullName}
 					</option>
 				))}
 			</Select>
 		</Fragment>
 	);
 
-	return [state, Seleccionar, setState];
+	return [state, SelectCripto, setState];
 };
 
-export default useMoneda;
+export default useCriptoMoneda;
